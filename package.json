@@ -2,7 +2,7 @@
   "name": "bank-tweet",
   "version": "1.0.0",
   "description": "Projeto - Case Twitter",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/paulinhoart/bank-tweet#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "mongoose": "^5.9.16",
     "nodemon": "^2.0.4",
     "twitter": "^1.7.1"
   }
