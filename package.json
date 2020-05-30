@@ -1,0 +1,24 @@
+{
+  "name": "bank-tweet",
+  "version": "1.0.0",
+  "description": "Projeto - Case Twitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulinhoart/bank-tweet.git"
+  },
+  "keywords": [],
+  "author": "Paulo Roberto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulinhoart/bank-tweet/issues"
+  },
+  "homepage": "https://github.com/paulinhoart/bank-tweet#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "twitter": "^1.7.1"
+  }
+}
