@@ -19,6 +19,7 @@
   "homepage": "https://github.com/paulinhoart/bank-tweet#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.4",
     "twitter": "^1.7.1"
   }
 }
