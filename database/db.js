@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost:27017/tweetdbprod', { useNewUrlParser: tru
 //mongoose.Promise = global.Promise;
 
 
-//model salvar tweets
+//model  tweets
 const tweets = new mongoose.Schema({
     user: String,
     date: String,

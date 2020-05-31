@@ -1,7 +1,16 @@
-const data = require('./db');
+/*
 
-//Entidade tweets com todos registros coletados. Acumulado na mesa tabela por forma de trabalho 
-//do mongodb, NoSql
+   * Autor: Paulo Roberto 
+   * Data: 31/05/2020
+
+   * Entidade tweets com todos registros coletados.
+   * Executar POS apenas uma vez parada dados nao se repetirem, necessario 
+   * melhoria, pois impacta na query Top 5 Usuarios
+
+*/
+
+
+const data = require('./db');
 
 class createTweet {
   constructor(Collection) {
@@ -42,6 +51,7 @@ class createTweet {
       return Promise.reject(error)
     }
   }
+  
   // Retornar Quantidade de Tweet Dia
   totalTweetDia() {
     try {
@@ -54,7 +64,7 @@ class createTweet {
   }
 
   
-
+// Retornar total por #tag
   countHashtagLang() {
     try {
       delete data.Mongoose.connection.models['tweets'];

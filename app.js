@@ -4,6 +4,8 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const tweets = require('./src/routes/tweets' );
 
+
+//MiddlLewares
 app.use(bodyParser.urlencoded( { extended: false}))
 app.use(bodyParser.json())
 app.use('/api/', tweets)

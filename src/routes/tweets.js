@@ -1,6 +1,7 @@
 /*
    
    * Exposicao dos metodos, Get, Post
+   * ROUTES
 
 */
 
@@ -17,7 +18,7 @@ var client = new Twitter ({
     access_token_secret: 'xJXP06NfHuzeios6VffCFxHXFLQFLmT8Zz5mgLpuDxR0c'
 });
 
-//Apresentacao
+//Apresentacao - Getting All
 router.get('/', function (req, res) {
   res.status(200).send({
       description: "Documentacao API - https://github.com/paulinhoart/bank-tweet"
@@ -57,7 +58,7 @@ router.post('/', async (req, res, next) => {
   catch (error) {
     console.log(JSON.stringify({
       type: "error",
-      error: JSON.stringify(error),
+      error: error.message,
       timestamp: Date.now() / 100,
     }))
     res.status(500).send({
@@ -76,7 +77,7 @@ router.get ('/information/topuser', async (req, res, next) => {
   catch (error) {
     console.log(JSON.stringify({
       type: "error",
-      error: JSON.stringify(error),
+      error: error.message,
       timestamp: Date.now() / 100,
     }))
     res.status(500).send({
@@ -95,7 +96,7 @@ router.get('/information/dia', async (req, res, next) => {
   catch (error) {
     console.log(JSON.stringify({
       type: "error",
-      error: JSON.stringify(error),
+      error: error.message,
       timestamp: Date.now() / 100,
     }))
     res.status(500).send({
@@ -104,6 +105,24 @@ router.get('/information/dia', async (req, res, next) => {
   }
 });
 
+// Retornar Quantidade total de Tweet por idioma e país
+router.get('/information/lang', async (req, res, next) => {
+  try {
+    const createTweets = new CreateTweets('tweets');
+    const result = await createTweets.countHashtagLang()
+    res.status(200).send(result)
+  } catch (error) {
+    console.log(JSON.stringify({
+      type: "error",
+      app_name: process.env.APP_NAME, //varialvel de ambiente nao definida
+      error: error.message,
+      timestamp: Date.now() / 100,
+    }))
+    res.status(500).send({
+      error: "500 - Internal Server Error"
+    })
+  }
+});
 
 
 module.exports = router;
