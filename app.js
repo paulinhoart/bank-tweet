@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express()
-
+const router = express.Router();
+const bodyParser = require('body-parser');
 const tweets = require('./src/routes/tweets' );
 
+app.use(bodyParser.urlencoded( { extended: false}))
+app.use(bodyParser.json())
+app.use('/api/', tweets)
 
-app.use('/', tweets)
+
+module.exports = app;
+
 
 /*
 app.use( (req, res, next) => {
@@ -12,5 +18,3 @@ app.use( (req, res, next) => {
         mensagem: "Documentacao API - https://github.com/paulinhoart/bank-tweet"
     });
 }) */
-
-module.exports = app;

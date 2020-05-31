@@ -1,9 +1,15 @@
+/*
+   
+   * Exposicao dos metodos, Get, Post
+
+*/
+
 const express = require('express');
 const router = express.Router();
+const CreateTweets = require('../../database/tweets');
+
 var Twitter = require('twitter');
-
-
-//autenticacao
+//autenticacao - melhor pratica é passar informaçoes por variavel de ambiente
 var client = new Twitter ({
     consumer_key: 'KVWEDsKPWPKqdq9VDucJOaDzW',
     consumer_secret: 'Lv0dSQU4rqnlo2LqziREUOapoyZZll9M542qkudGvb25gFCSMI',
@@ -24,33 +30,80 @@ router.get('/:word', async (req, res, next) => {
     client.get('search/tweets', { q: `#${word}`, count: '100' }, async function (error, tweets, response) {
       res.status(200).send(tweets)
     });
+});
+
+//Metodo POST  - Item 3 do Case
+router.post('/', async (req, res, next) => {
+  try {
+    const words = ["openbanking", "remediation", "devops", "sre", "microservices", "observability", "oauth", "metrics", "logmonitoring", "opentracing"] //Object.values(req.body) //req.body;
+    words.forEach(async Words => {
+      client.get('search/tweets', { q: `#${Words}`, count: 100 }, async (error, tweets, response) => {
+        const Tweets = tweets.statuses;
+        const createTweets = new CreateTweets('tweets');
+        Tweets.forEach(async element => {
+          const date = new Date(element.created_at);
+          const timeStamp = date.getTime();
+          const newResult = await createTweets
+            .gravaRegsitro(element.user.screen_name, element.created_at, timeStamp, element.text, Words, element.user.followers_count, element.lang, element.user.location)
+        })
+      });
+    });
+    res.status(200).send({
+      data: {
+        message: ` Tweet gravado - ${words} `
+      }
+    });
+  } 
+  catch (error) {
+    console.log(JSON.stringify({
+      type: "error",
+      error: JSON.stringify(error),
+      timestamp: Date.now() / 100,
+    }))
+    res.status(500).send({
+      error: "500 - Internal Server Error"
+    })
+  }
+});
+
+// Retorna do 5 usuárioscom mais seguidores
+router.get ('/information/topuser', async (req, res, next) => {
+  try {
+    const createTweets = new CreateTweets('tweets');
+    const result = await createTweets.topFiveUsersFollows()
+    res.status(200).send(result)
+  } 
+  catch (error) {
+    console.log(JSON.stringify({
+      type: "error",
+      error: JSON.stringify(error),
+      timestamp: Date.now() / 100,
+    }))
+    res.status(500).send({
+      error: "500 - Internal Server Error"
+    })
+  }
 })
+
+// Retornar Quantidade de Tweet Dia
+router.get('/information/dia', async (req, res, next) => {
+  try {
+    const createTweets = new CreateTweets('tweets');
+    const result = await createTweets.totalTweetDia()
+    res.status(200).send(result)
+  } 
+  catch (error) {
+    console.log(JSON.stringify({
+      type: "error",
+      error: JSON.stringify(error),
+      timestamp: Date.now() / 100,
+    }))
+    res.status(500).send({
+      error: "500 - Internal Server Error"
+    })
+  }
+});
+
 
 
 module.exports = router;
-
-
-
-/*
-  var params = {q: 'totvs', count: '100' };
-  client.get('search/tweets', params, function(error, tweets, response) {
-    if (!error) {
-      console.log('Tweets encontrados', tweets);
-      console.log(response);  // Raw response object.
-    }
-  });
-
-
-var params = {q: 'totvs', count: '100' };
-client.get('search/tweets', params, async function(error, tweets, response) {
-   if (!error) {
-      console.log('Tweets encontrados', tweets);
-      console.log(response);  // Raw response object.
-    }else throw error {
-        console.log('Erro na consulta ', error);
-    };
-  });
-*/
-  
-
-  

@@ -1,0 +1,26 @@
+version: '3.2'
+
+services:
+    project-bank-tweet:
+        container_name: bank-tweet
+        build: ./
+        restart: unless-stopped
+        networks: 
+            - bubble
+        ports:
+            - "8001:8000"
+    mongo:
+        image: mongo:4
+        container_name: mongodb
+        networks: 
+            - bubble
+        ports:
+            - "27017:27017"
+
+networks: 
+    bubble:
+        driver: bridge
+        
+networks: 
+    bubble:
+        external: true
