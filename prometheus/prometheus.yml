@@ -1,0 +1,18 @@
+##
+global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+scrape_configs:
+- job_name: my-application-bank-tweet-api
+  honor_timestamps: true
+  metrics_path: /api/information/metrics
+  scheme: http
+  static_configs:
+  - targets: ['bank-tweet-api:3100']
+- job_name: my-application-local
+  honor_timestamps: true
+  metrics_path: /metrics
+  scheme: http
+  static_configs:
+  - targets: ['localhost:9090']
+    

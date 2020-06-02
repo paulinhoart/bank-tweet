@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+    bank-tweet-api:
+        container_name: bank-tweet-api
+        build: ./
+        environment: 
+            - APP_NAME=bank-tweet-api
+        ports:
+            - "3100:3100"
+    mongo:
+        container_name: mongodb
+        image: mongo:4
+        volumes:
+            - mongodata:/data/db
+        ports:
+            - "27017:27017"
+    prometheus:
+        container_name: prometheus
+        image: prom/prometheus
+        ports:
+            - "9090:9090"
+        volumes: 
+            - ./prometheus:/etc/prometheus
+    grafana:
+        image: grafana/grafana:5.0.4
+        ports:
+            - "3000:3000"
+        environment:
+        - GF_AUTH_BASIC_ENABLED=false
+        - GF_AUTH_ANONYMOUS_ENABLED=true
+        - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+              
+
+volumes:
+    mongodata:

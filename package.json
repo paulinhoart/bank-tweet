@@ -4,6 +4,7 @@
   "description": "Projeto - Case Twitter",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.16",
     "nodemon": "^2.0.4",
+    "prom-client": "^12.0.0",
     "twitter": "^1.7.1"
   }
 }

@@ -1,0 +1,61 @@
+#docker build -t bank-tweet-teste .
+#docker run -p 3100:3100
+
+
+
+docker-compose up 
+docker network create bubble
+docker-compose up 
+docker-compose up -d mongo
+
+#docker run --name mongodb -p 27017:27017 -d mongo:4
+
+#Cliente mongodb
+docker run --name mongoclient -p 3010:3010 --link mongodb:mongodb -d mongoclient/mongoclient 
+
+
+    prometheus:
+        container_name: prometheus
+        image: prom/prometheus
+        ports:
+            - "9090:9090"
+        volumes: 
+            - ./prometheus:/etc/prometheus
+    
+    grafana:
+        image: grafana/grafana
+        ports: 
+            - "3000:3000"
+
+    network:
+    default:
+        driver: brigde
+
+
+
+            grafana-dashboards:
+        image: alpine:3.10
+        depends_on:
+            - grafana
+        volumes:
+        - ./grafana:/grafana
+        command: >
+            /bin/sh -c "
+            apk add --no-cache curl
+            echo 'waiting for grafana'
+            sleep 5s
+            cd /grafana
+            curl --request POST http://grafana:3000/api/datasources --header 'Content-Type: application/json' -d @datasources.json
+            curl --request POST http://grafana:3000/api/dashboards/db --header 'Content-Type: application/json' -d @dashboard.json"
+
+//////////////
+
+//Simula a sleep
+  var start = new Date()
+  var simulateTime = 1000
+ 
+  setTimeout(function(argument){
+    //execution time simulated with seTimeout Function
+    var end = new Date() - start
+    histogram.observe(end / 1000); // converte em seconds
+  }, simulateTime); 
