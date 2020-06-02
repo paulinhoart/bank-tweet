@@ -17,6 +17,7 @@ Para atender os requisitos do projeto vamos utilizar:
 * Grafana - DashBoard para mostrar as metricas geradas pelo Prometheus
 * Graylog ou ElastiSearch - para Logging da aplicação. Em definição
 
+![](https://github.com/paulinhoart/bank-tweet/blob/master/Arquitetura.png)
 
 
 
