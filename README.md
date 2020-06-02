@@ -20,6 +20,8 @@ Para atender os requisitos do projeto vamos utilizar:
 
 ![](https://github.com/paulinhoart/bank-tweet/blob/master/Arquitetura.png)
 
+Compartilhei o diagrama, utilizei Draw io - [Diagrama](https://drive.google.com/file/d/1Vq6Pd3Js1Mhk7pO05eyGwV0hITg2YPZZ/view?usp=sharing) 
+
 ## Documentação da API
 Desenvolvemos a API para atender os requisitos do projeto:
 
@@ -99,10 +101,16 @@ em DashBoard, utilizamos o Grafana para expor as informações de:
 
 ![](https://github.com/paulinhoart/bank-tweet/blob/master/grafana/Grafana.png)
 
-# Referências
+## Referências
+Para este projeto, consultei referencias, documentações de fabricantes e comunidades sobre as ferramentas.
+* Twitter - https://developer.twitter.com/en/docs/api-reference-index
+* NodeJs - https://nodejs.org/en/docs/
+* Prometheus - https://prometheus.io/docs/prometheus/latest/getting_started/
+* Grafana - https://grafana.com/docs/grafana/latest/
+* Docker - https://docs.docker.com/compose/
 
 
-# Considerações
+## Considerações
 O trabalho pode ser realizado de diversas formas, mas o que é preciso, em minha opnião, é procurar as melhores praticas, seja no desenvolvimento, processos e empatia, todos estes itens podemos e devemos melhorar a cada dia pois a pratica e a repetição nos direciona  ao amadurecimento, experiência e melhores resultados.
 
 Obrigado pelo oportunidade deste desafio, onde estudei e aprendi muito.
