@@ -19,7 +19,12 @@ Para atender os requisitos do projeto vamos utilizar:
 
 ![](https://github.com/paulinhoart/bank-tweet/blob/master/Arquitetura.png)
 
-
-
-# Documentação das APIs - Swagger
+# Documentação das APIs
+Desenvolvemos 3 API,s para disponibilizar os requisitos:
+* Os cinco usuários que possuem mais seguidores
+* Total de postagens agrupadas por hora do dia
+* Total de postagens paara cada #TAG separado por idioma/país de origem da postagem
+### Consumo da APIs
+Neste projeto inclui uma coleção que gerei do Postam, prontas para consumir as APIs. 
+*
 # Documentação UP projeto em Docker
