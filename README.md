@@ -7,6 +7,7 @@ Este projeto tem como objetivo desenvolver uma aplicação capaz de coletar post
    * Disponiblizar Métricas, Logging.
 #### Requisito não funcionais
    * Arquitetura de ambiente em Docker
+   * Chaves de acesso para consumir as APIs do Twitter
 
 ## Arquitetura da Aplicação
 A aplicação é Web, todo seu ecossistema é em nuvem, rodando em Docker containers.
@@ -35,6 +36,18 @@ Neste projeto inclui uma coleção que gerei do Postam, prontas para consumir as
 ## Deploy da Aplicação
 ### Requisitos
 Antes de realizar o deploy da aplicação Bank Tweet API, verificar os requisitos abaixo
+#### Credencias Twitter API
+Para consumir as APIs do Twitter é necessário obter as chaves de acesso.
+Acesse - https://developer.twitter.com/en
+Com as credencias em mãos, como boa prática você pode definir as chaves em variaveis de ambiente para segurança e não definir em fontes, este projeto contém as chaves apenas como exemplo.
+```
+var client = new Twitter ({
+    consumer_key: ' ',
+    consumer_secret: ' ',
+    access_token_key: ' ',
+    access_token_secret: ' '
+});
+```
 #### Ambientes Docker
 A aplicação Web foi desenvolvida com a pratica de utilização de containers, e utilizaremos o Docker Compose.
 Para este trabalho utilizamos o Docker na versão:
