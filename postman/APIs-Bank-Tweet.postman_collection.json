@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "8c053c87-d559-4515-87dd-fce43527e859",
+		"name": "APIs - Projeto Bank-Tweet",
+		"description": "Nesta colellection todas APIs para extracao de metricas\nitem 5 do Case Twitter\n#tag abaixo\nopenbanking,\nremediation,\ndevops,\nsre,\nmicroservices,\nobservability,\noauth,\nmetrics,\nlogmonitoring,\nopentracing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "topFiveUsersFollows",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3100/api/information/topuser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"api",
+						"information",
+						"topuser"
+					]
+				},
+				"description": "Lista o top 5 de usuarios com maiores seguidos\n"
+			},
+			"response": []
+		},
+		{
+			"name": "totalTweetDia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3100/api/information/dia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"api",
+						"information",
+						"dia"
+					]
+				},
+				"description": "Toal de Tweet por dia"
+			},
+			"response": []
+		},
+		{
+			"name": "lang",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3100/api/information/lang",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3100",
+					"path": [
+						"api",
+						"information",
+						"lang"
+					]
+				},
+				"description": "Retornar Quantidade total de Tweet por idioma e país"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "48cad672-1a48-4ec2-9bbf-f146eefac929",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "1b173757-33ce-49d3-8949-dfea5c1538b0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
