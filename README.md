@@ -33,3 +33,12 @@ Neste projeto inclui uma coleção que gerei do Postam, prontas para consumir as
 * [Coleção Postam](https://github.com/paulinhoart/bank-tweet/blob/master/postman/APIs-Bank-Tweet.postman_collection.json)
 
 # Documentação UP projeto em Docker
+# DashBoard e Logs - Resultado
+## Grafana DashBoard
+Com a coleta de métricas realizadas através do Prometheus com NodeJs, conseguimos disponibilizar as informações 
+em DashBoard, utilizamos o Grafana para expor as informações de:
+* Consumo de Memória da Aplicação
+* Quantidade de Requisições nas APIs
+* Latencia - Tempo de execução de cada método
+* Total geral de erros das APIs
+![]()
