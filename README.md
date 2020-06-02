@@ -21,9 +21,13 @@ Para atender os requisitos do projeto vamos utilizar:
 
 # Documentação das APIs
 Desenvolvemos 3 API,s para disponibilizar os requisitos:
-* /api/information/topusers - Os cinco usuários que possuem mais seguidores
-* /api/information/dia - Total de postagens agrupadas por hora do dia
-* /api/information/lang - Total de postagens paara cada #TAG separado por idioma/país de origem da postagem
+
+| **Method**                    | **Finalidade**                                                                        |
+|---------------------------|-----------------------------------------------------------------------------------|
+| /api/information/topusers | Os cinco usuários que possuem mais seguidores                                     |
+| /api/information/dia      | Total de postagens agrupadas por hora do dia                                      |
+| /api/information/lang     | Total de postagens paara cada #TAG separado por idioma/país de origem da postagem |
+
 ### Consumo da APIs
 Neste projeto inclui uma coleção que gerei do Postam, prontas para consumir as APIs.
 * [Coleção Postam](https://github.com/paulinhoart/bank-tweet/blob/master/postman/APIs-Bank-Tweet.postman_collection.json)
