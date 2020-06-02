@@ -6,11 +6,15 @@ services:
         build: ./
         environment: 
             - APP_NAME=bank-tweet-api
+        networks: 
+            - mynet
         ports:
             - "3100:3100"
     mongo:
         container_name: mongodb
         image: mongo:4
+        networks: 
+            - mynet
         volumes:
             - mongodata:/data/db
         ports:
@@ -18,19 +22,26 @@ services:
     prometheus:
         container_name: prometheus
         image: prom/prometheus
+        networks: 
+            - mynet
         ports:
             - "9090:9090"
         volumes: 
             - ./prometheus:/etc/prometheus
     grafana:
         image: grafana/grafana:5.0.4
+        networks: 
+            - mynet
         ports:
             - "3000:3000"
         environment:
         - GF_AUTH_BASIC_ENABLED=false
         - GF_AUTH_ANONYMOUS_ENABLED=true
         - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-              
+
+networks:
+    mynet:
+        driver: bridge              
 
 volumes:
     mongodata:
