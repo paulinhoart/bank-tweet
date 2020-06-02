@@ -1,14 +1,14 @@
 # Projeto Bank Tweet API
-## Objetivo
+### Objetivo
 Este projeto tem como objetivo desenvolver uma aplicação capaz de coletar postagens do Twitter conforme a #tag desejada.
-### Principais Requisitos do projeto
+#### Principais Requisitos do projeto
    * Coletar ultimas 100 postagens de cada #tag informada. Não ultrapassar esta quantidade.
    * Salvar os dados coletados em banco de dados.
    * Disponiblizar Métricas, Logging.
-### Requisito não funcionais
+#### Requisito não funcionais
    * Arquitetura de ambiente em Docker
 
-# Arquitetura da Aplicação
+## Arquitetura da Aplicação
 A aplicação é Web, todo seu ecossistema é em nuvem, rodando em Docker containers.
 Para atender os requisitos do projeto vamos utilizar:
 * Docker - nosso containers
@@ -19,39 +19,60 @@ Para atender os requisitos do projeto vamos utilizar:
 
 ![](https://github.com/paulinhoart/bank-tweet/blob/master/Arquitetura.png)
 
-# Documentação das APIs
-Desenvolvemos 3 API,s para disponibilizar os requisitos:
+## Documentação da API
+Desenvolvemos a API para atender os requisitos do projeto:
 
-| **Method**                    | **Finalidade**                                                                        |
+| **Endpoint**                    | **Finalidade**                                                                        |
 |---------------------------|-----------------------------------------------------------------------------------|
 | /api/information/topusers | Os cinco usuários que possuem mais seguidores                                     |
 | /api/information/dia      | Total de postagens agrupadas por hora do dia                                      |
 | /api/information/lang     | Total de postagens paara cada #TAG separado por idioma/país de origem da postagem |
 
-### Consumo da APIs
+### Consumo da API
 Neste projeto inclui uma coleção que gerei do Postam, prontas para consumir as APIs.
-* [Coleção Postam](https://github.com/paulinhoart/bank-tweet/blob/master/postman/APIs-Bank-Tweet.postman_collection.json)
+* [Coleção Postman](https://github.com/paulinhoart/bank-tweet/blob/master/postman/APIs-Bank-Tweet.postman_collection.json)
 
-# Deploy do Projeto
-## Requisitos
-Antes de realizar o deploy, verificar os requisitos abaixo
-### Ambientes Docker
-A aplicação Web foi desenvolvida com a pratica de utilização de containers, e utilizamores o Docker.
+## Deploy da Aplicação
+### Requisitos
+Antes de realizar o deploy da aplicação Bank Tweet API, verificar os requisitos abaixo
+#### Ambientes Docker
+A aplicação Web foi desenvolvida com a pratica de utilização de containers, e utilizaremos o Docker Compose.
 Para este trabalho utilizamos o Docker na versão:
 
 ```
 % docker -v
 Docker version 19.03.8, build afacb8b
 ```
-### Portas
+#### Portas
 Certifique que as portas abaixos não estão em uso:
 * **3100**  - NodeJS utiliza para expor as APIs
 * **27017** - MongoDB
 * **9090**  - Prometheus
 * **3000**  - Grafana
 
-### Subindo Aplicação
-Com os requisitos acima finalizados
+### Subindo a Aplicação
+Com os requisitos acima finalizados, vamos subir a aplicação.
+1. Primeiro clonar o projeto para local
+
+2. Acessar a raiz da pasta do projeto e executar:
+```
+% docker-compose up -d
+```
+Resultado
+```
+Creating bank-tweet-api       ... done
+Creating prometheus           ... done
+Creating mongodb              ... done
+Creating bank-tweet_grafana_1 ... done
+```
+Caso tudo done, pronto sua aplicação esta no ar.
+
+Através do Postman, importe a coleção [APIs-Bank-Tweet...json](https://github.com/paulinhoart/bank-tweet/blob/master/postman/APIs-Bank-Tweet.postman_collection.json) que esta na pasta postman e execute o method POST para popular a base de dados.
+
+Em seguida pode acessar os endpoint, Grafana, Prometheus pelo navegador:
+* http://localhost:3100 - API com endpoints conforme informações em Documentação da API
+* http://localhost:3000 - Grafana DashBoard
+* http://localhost:9090 - Prometheus
 
 # Métricas - DashBoard e Logs
 ## Grafana DashBoard
