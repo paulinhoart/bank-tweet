@@ -6,7 +6,7 @@ Este projeto tem como objetivo desenvolver uma aplicação capaz de coletar post
     2. Salvar os dados coletados em banco de dados.
     3. Disponiblizar Métricas, Logging.
 ### Requisito não funcionais
-    1. Ambiente em Docker
+    1. Arquitetura de ambiente em Docker
 
 
 # Documentação das APIs - Swagger
