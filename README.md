@@ -94,7 +94,8 @@ Em seguida pode acessar os endpoint, Grafana, Prometheus pelo navegador:
 
 # Métricas - DashBoard e Logs
 ## Loggings (item 7)
-O NodeJs envia logs para o ElasticSearch e utilizamos o Kibana para construi query
+O NodeJs envia logs para o ElasticSearch e utilizamos o Kibana.
+
 ![](https://github.com/paulinhoart/bank-tweet/blob/master/imagens/elasticsearch%2Bkibana.png)
 
 ## Grafana DashBoard (item 9)
