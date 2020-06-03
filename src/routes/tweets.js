@@ -9,6 +9,7 @@ const express = require('express');
 const router = express.Router();
 const CreateTweets = require('../../database/tweets');
 
+
 var Twitter = require('twitter');
 //autenticacao - melhor pratica é passar informaçoes por variavel de ambiente
 var client = new Twitter ({
@@ -26,6 +27,19 @@ router.get('/:word', async (req, res, next) => {
     client.get('search/tweets', { q: `#${word}`, count: '100' }, async function (error, tweets, response) {
       res.status(200).send(tweets)
     });
+    
+    elasticClient.index({
+      index: 'logging-bank-tweet-api',
+      type: 'request', //
+      id: req.body.id,
+      routing: req.method,
+      body: {
+        title: req.originalUrl,
+        tags: [word],
+        published: true,
+      }
+  });
+
 });
 
 //Metodo POST  - Item 3 do Case
@@ -160,13 +174,45 @@ const histogram = new cliente.Histogram({
   //buckets: [1, 2, 5, 6, 10]
 })
 
+// Node direto no ElasticSearch
+const Elasticsearch = require('elasticsearch');
+const elasticClient = new Elasticsearch.Client({
+  host: 'elasticsearch:9200',
+  log: 'trace',
+  apiVersion: '7.2', // use the same version of your Elasticsearch instance
+});
+
 //Home
 router.get('/', async (req,res, next) => {
 
-  res.status(200).send( {
-      mensagem: "Endpoint utilizado para Prometheus e Grafana",
-      description: "Documentacao API - https://github.com/paulinhoart/bank-tweet"
+  //Valida conexao com ElasticSearch
+  elasticClient.ping({
+    // ping usually has a 3000ms timeout
+    requestTimeout: 1000
+  }, function (error) {
+    if (error) {
+      console.trace('elasticsearch cluster is down!');
+    } else {
+      console.log('All is well');
+    }
   });
+
+  elasticClient.index({
+      index: 'logging-bank-tweet-api',
+      type: 'request', //
+      id: req.body.id,
+      routing: req.method,
+      body: {
+        title: req.originalUrl,
+        tags: ['home'],
+        published: true,
+      }
+  });
+
+  res.status(200).send( {
+    mensagem: "Endpoint utilizado para Prometheus e Grafana",
+    description: "Documentacao API - https://github.com/paulinhoart/bank-tweet"
+});
  
 });
 
