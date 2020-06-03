@@ -19,7 +19,7 @@ Para atender os requisitos do projeto vamos utilizar:
 * ElastiSearch - para Logging da aplicação.
 * Kibana para Dash do ElasticSearch
 
-![]()
+![](https://github.com/paulinhoart/bank-tweet/blob/master/imagens/Arquitetura.png)
 
 Compartilhei o diagrama, utilizei Draw io - [Diagrama](https://drive.google.com/file/d/1Vq6Pd3Js1Mhk7pO05eyGwV0hITg2YPZZ/view?usp=sharing) 
 
@@ -65,6 +65,8 @@ Certifique que as portas abaixos não estão em uso:
 * **27017** - MongoDB
 * **9090**  - Prometheus
 * **3000**  - Grafana
+* **9200**  - ElasticSearch
+* **5601**  - Kibana
 
 ### Subindo a Aplicação
 Com os requisitos acima finalizados, vamos subir a aplicação.
@@ -91,7 +93,11 @@ Em seguida pode acessar os endpoint, Grafana, Prometheus pelo navegador:
 * http://localhost:9090 - Prometheus
 
 # Métricas - DashBoard e Logs
-## Grafana DashBoard
+## Loggings (item 7)
+O NodeJs envia logs para o ElasticSearch e utilizamos o Kibana para construi query
+![](https://github.com/paulinhoart/bank-tweet/blob/master/imagens/elasticsearch%2Bkibana.png)
+
+## Grafana DashBoard (item 9)
 Com a coleta de métricas realizadas através do Prometheus com NodeJs, conseguimos disponibilizar as informações 
 em DashBoard, utilizamos o Grafana para expor as informações de:
 
@@ -109,6 +115,7 @@ Para este projeto, consultei referencias, documentações de fabricantes e comun
 * Prometheus - https://prometheus.io/docs/prometheus/latest/getting_started/
 * Grafana - https://grafana.com/docs/grafana/latest/
 * Docker - https://docs.docker.com/compose/
+* ElasticSearch - https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/16.x/index.html e https://www.npmjs.com/package/elasticsearch
 
 
 ## Considerações
