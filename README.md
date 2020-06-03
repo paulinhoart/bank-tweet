@@ -16,9 +16,10 @@ Para atender os requisitos do projeto vamos utilizar:
 * NodeJS - para desenvolvimento da API
 * Prometheus - para metricas de infraestrutura, monitoramento
 * Grafana - DashBoard para mostrar as metricas geradas pelo Prometheus
-* Graylog ou ElastiSearch - para Logging da aplicação. Em definição
+* ElastiSearch - para Logging da aplicação.
+* Kibana para Dash do ElasticSearch
 
-![](https://github.com/paulinhoart/bank-tweet/blob/master/Arquitetura.png)
+![]()
 
 Compartilhei o diagrama, utilizei Draw io - [Diagrama](https://drive.google.com/file/d/1Vq6Pd3Js1Mhk7pO05eyGwV0hITg2YPZZ/view?usp=sharing) 
 
