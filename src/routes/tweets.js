@@ -27,9 +27,9 @@ router.get('/:word', async (req, res, next) => {
     client.get('search/tweets', { q: `#${word}`, count: '100' }, async function (error, tweets, response) {
       res.status(200).send(tweets)
     });
-    
+
     elasticClient.index({
-      index: 'logging-bank-tweet-api',
+      index: 'loggings-bank-tweet-api',
       type: 'request', //
       id: req.body.id,
       routing: req.method,
@@ -38,7 +38,7 @@ router.get('/:word', async (req, res, next) => {
         tags: [word],
         published: true,
       }
-  });
+    });
 
 });
 
@@ -196,18 +196,20 @@ router.get('/', async (req,res, next) => {
       console.log('All is well');
     }
   });
+  
 
   elasticClient.index({
-      index: 'logging-bank-tweet-api',
-      type: 'request', //
+      index: 'loggings-bank-tweet-api',
+      type: 'request',
       id: req.body.id,
       routing: req.method,
       body: {
         title: req.originalUrl,
         tags: ['home'],
         published: true,
-      }
-  });
+        }
+
+      });
 
   res.status(200).send( {
     mensagem: "Endpoint utilizado para Prometheus e Grafana",
