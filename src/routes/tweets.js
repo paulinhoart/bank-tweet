@@ -13,10 +13,10 @@ const CreateTweets = require('../../database/tweets');
 var Twitter = require('twitter');
 //autenticacao - melhor pratica é passar informaçoes por variavel de ambiente
 var client = new Twitter ({
-    consumer_key: 'KVWEDsKPWPKqdq9VDucJOaDzW',
-    consumer_secret: 'Lv0dSQU4rqnlo2LqziREUOapoyZZll9M542qkudGvb25gFCSMI',
-    access_token_key: '37733469-l9jPxHBwuAiiBcn7ReZqmPg3Mk8e2nQEF3W7vVuDX',
-    access_token_secret: 'xJXP06NfHuzeios6VffCFxHXFLQFLmT8Zz5mgLpuDxR0c'
+    consumer_key: ' ',
+    consumer_secret: ' ',
+    access_token_key: ' ',
+    access_token_secret: ' '
 });
 
 
