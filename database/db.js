@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 // Config Docker Network
-mongoose.connect('mongodb://mongo:27017/tweetdbprod', { useNewUrlParser: true  });
+//mongoose.connect('mongodb://mongo:27017/tweetdbprod', { useNewUrlParser: true  });
 // Config 
-//mongoose.connect('mongodb://localhost:27017/tweetdbprod', { useNewUrlParser: true  });
+mongoose.connect('mongodb://localhost:27017/tweetdbprod', { useNewUrlParser: true  });
 //mongoose.Promise = global.Promise;
 
 
