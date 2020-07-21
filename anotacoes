@@ -59,3 +59,6 @@ docker run --name mongoclient -p 3010:3010 --link mongodb:mongodb -d mongoclient
     var end = new Date() - start
     histogram.observe(end / 1000); // converte em seconds
   }, simulateTime); 
+
+  ////////
+  Ajustando para DIFF
